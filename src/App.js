@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Redirect, Navigate } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { HomePage } from './components/Pages/HomePage';
 
@@ -9,6 +9,7 @@ function App() {
       <Navbar />
       <div className="content">
         <Routes>
+          <Route exact path="/" element={<Navigate replace to="/home"/>}/>
           <Route path="/home" element={<HomePage/>} />
           <Route path="/explore" element={<h1>Explore Page</h1>} />
           <Route path="/user" element={<h1>Profile Page</h1>} />
