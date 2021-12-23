@@ -1,12 +1,29 @@
 @media screen and (max-width: 1300px) {
   .content {
-    margin-left: 150px;
+    margin-left: 90px;
   }
 }
 
 @media screen and (min-width: 1301px) {
   .content {
-    margin-left: 325px;
+    margin-left: 275px;
   }
 }
 
+@media screen and (max-width: 500px) {
+  .content {
+    margin: 0;
+  }
+  body {
+    padding: 0;
+  }
+}
+
+:root {
+  --twitter-blue: #1DA1F2;
+  --twitter-black: #14171A;
+  --twitter-dark-grey: #657786;
+  --twitter-light-grey: #AAB8C2;
+  --twitter-xlight-grey: #E1E8ED;
+  --twitter-xxlight-grey: #F5F8FA;
+}

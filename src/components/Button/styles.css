@@ -1,0 +1,56 @@
+.primary {
+    display: block;
+    border: none;
+    background-color: var(--twitter-blue);
+    font-size: 18px;
+    color: #fff;
+    padding: 1rem 0;
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    height: fit-content;
+}
+
+.primary:hover {
+    background-color: #178fda;
+}
+
+.secondary {
+    display: block;
+    border: none;
+    background-color: var(--twitter-black);
+    font-size: 18px;
+    color: #fff;
+    padding: 1rem 0;
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    height: fit-content;
+}
+
+.secondary:hover {
+    background-color: #24282c;
+}
+
+.tertiary {
+    display: block;
+    border: 1px var(--twitter-light-grey) solid;
+    background-color: #fff;
+    font-size: 18px;
+    color: var(--twitter-black);
+    padding: 1rem 0;
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    height: fit-content;
+}
+
+.tertiary:hover {
+    background-color: var(--twitter-xlight-grey);
+}

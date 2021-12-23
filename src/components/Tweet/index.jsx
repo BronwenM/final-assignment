@@ -21,16 +21,16 @@ export const Tweet = (props) => {
                 <div className='interactions'>
                 <ul>
                     <li>
-                        <FaRegComment/>{comments}
+                        <button><FaRegComment/>{comments}</button>
                     </li>
                     <li>
-                        <AiOutlineRetweet/>{retweets}
+                        <button><AiOutlineRetweet/>{retweets}</button>
                     </li>
                     <li>
-                        <AiOutlineHeart/>{likes}
+                        <button><AiOutlineHeart/>{likes}</button>
                     </li>
                     <li>
-                        <FiShare/>
+                        <button><FiShare/></button>
                     </li>
                 </ul>
             </div>

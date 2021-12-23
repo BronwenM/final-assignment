@@ -20,10 +20,11 @@
     width: 275px;
     z-index: 1;
     top: 0;
-    background-color: aliceblue;
+    background-color: #fff;
     overflow-x: hidden;
     padding: 1rem;
     flex-direction: column;
+    border-right: 1px var(--twitter-xlight-grey) solid;
 }
 
 .nav-bottom{
@@ -34,7 +35,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background: cadetblue;
+    background: #fff;
+    border-top: 1px var(--twitter-xlight-grey) solid;
 }
 
 .navbar li {

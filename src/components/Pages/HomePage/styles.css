@@ -1,3 +1,8 @@
 .timeline tr{
     border: 1px #000 solid;
 }
+
+.page-content {
+    display: flex;
+    flex-direction: row;
+}

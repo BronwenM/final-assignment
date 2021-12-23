@@ -10,52 +10,55 @@ import { useState } from 'react';
 
 export const Navbar = () => {
 
+    {/* For later to set active link so that icons can be set conditionally */}
     const [activeLink, setActiveLink] = useState(null);
 
     return(
         <nav className="navbar">
+            {/* Nav for desktop */}
             <ul className='navbar-links nav-side'>
                 <li className='twitter-icon'>
-                    <NavLink activeClassName="nav-selected" to="/home"><IoLogoTwitter/></NavLink>
+                    <NavLink to="/home"><IoLogoTwitter/></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/home"><RiHome7Line/><span className="link-title"> Home</span></NavLink>
+                    <NavLink to="/home"><RiHome7Line/><span className="link-title"> Home</span></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/explore"><BiHash/> <span className="link-title">Explore</span></NavLink>
+                    <NavLink to="/explore"><BiHash/> <span className="link-title">Explore</span></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/notifications"><IoNotificationsOutline/> <span className="link-title">Notifications</span></NavLink>
+                    <NavLink to="/notifications"><IoNotificationsOutline/> <span className="link-title">Notifications</span></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/messages"><MdMailOutline/> <span className="link-title">Messages</span></NavLink>
+                    <NavLink to="/messages"><MdMailOutline/> <span className="link-title">Messages</span></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/i/bookmarks"><BsBookmark/> <span className="link-title">Bookmarks</span></NavLink>
+                    <NavLink to="/i/bookmarks"><BsBookmark/> <span className="link-title">Bookmarks</span></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/user/lists"><RiFileList2Line/> <span className="link-title">Lists</span></NavLink>
+                    <NavLink to="/user/lists"><RiFileList2Line/> <span className="link-title">Lists</span></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/user"><BsPerson/> <span className="link-title">Profile</span></NavLink>
+                    <NavLink to="/user"><BsPerson/> <span className="link-title">Profile</span></NavLink>
                 </li>
                 <li>
                     <a className="logo" href='#'><CgMoreO/> <span className="link-title">More</span></a>
                 </li>
             </ul>
 
+            {/* Nav for mobile */}
             <ul className="nav-bottom">
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/home"><RiHome7Line/></NavLink>
+                    <NavLink to="/home"><RiHome7Line/></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/explore"><CgSearch/></NavLink>
+                    <NavLink to="/explore"><CgSearch/></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/notifications"><IoNotificationsOutline/></NavLink>
+                    <NavLink to="/notifications"><IoNotificationsOutline/></NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName="nav-selected" to="/messages"><MdMailOutline/></NavLink>
+                    <NavLink to="/messages"><MdMailOutline/></NavLink>
                 </li>
             </ul>
         </nav>

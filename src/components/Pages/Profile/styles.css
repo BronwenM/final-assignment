@@ -1,0 +1,63 @@
+header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background-color: cadetblue;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#header-text {
+    margin-left: 3rem;
+}
+
+#header-text h3, #header-text p{
+    margin: 0;
+}
+
+.banner img{
+    width: 100%;
+    height: auto;
+    min-height: 100px;
+    max-height: 200px;
+}
+
+.profile-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.profile-img img{
+    transform: translate(2vw,-6vh);
+    width: clamp(90px,10vw,140px);
+    height: auto;
+    border-radius: 100%;
+    border: 5px #fff solid;
+}
+
+.profile-img button {
+    width: 200px;
+}
+
+.profile-details p {
+    margin: 0;
+    color: var(--twitter-dark-grey);
+}
+
+#screen-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--twitter-black);
+}
+
+#username, #join-date {
+    margin-bottom: 1rem;
+}
+
+.profile-details a {
+    color: var(--twitter-black);
+    text-decoration: none;
+    margin-right: 1rem;
+}
