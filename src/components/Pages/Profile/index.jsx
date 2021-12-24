@@ -7,10 +7,65 @@ import profilePic from '../../../assets/images/blank-profile-pic.png';
 import blankBanner from '../../../assets/images/blank-banner.png';
 import { Tweet } from '../../Tweet';
 import { Header } from '../../Header';
+import UserContext from '../../../context/userContext';
+import { useEffect, useContext,useState } from 'react';
 
 export const Profile = (props) => {
     
     const {username, screenName, tweetCount, joinDate, followCount, followerCount} = props;
+    const globalState = useContext(UserContext);
+    const [tweets, setTweets] = useState([]);
+
+
+    const getTweets = async() => {
+        try {
+            const res = await fetch("https://firestore.googleapis.com/v1/projects/final-assignment-3e1d7/databases/(default)/documents/tweets/");
+            const data = await res.json();
+            console.log(data);
+
+            const formatData = data.documents.map( (tweet) => {
+                return tweet.fields;
+            })
+            const userTweets = formatData.filter(tweet => formatData.username === globalState.username);
+            console.log(userTweets);
+            setTweets(userTweets);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getTimeDiff = (originalTime) => {
+        const currTime = Date.now();
+        const postTime = new Date(originalTime);
+        console.log(postTime.toString());
+        const diffMS = (currTime - postTime);
+        const diffS = Math.floor((currTime - postTime)/1000);
+        const diffMins = Math.round(diffS/60);
+        const diffHrs = Math.floor(diffMins/60);
+
+        if(diffS < 60){
+            return diffS.toString() + "s";
+        }
+        if((diffS >= 60) && (diffMins < 60)) {
+            return diffMins.toString() + "m";
+        }
+        if((diffMins >= 60) && (diffHrs < 24)) {
+            return diffHrs.toString() + "h";
+        }
+        if(diffHrs >= 24){
+            return postTime.toLocaleString('default', {month: 'short', day: 'numeric'});
+        }
+
+    }
+
+    useEffect(
+        ()=> {
+            getTweets();
+        }, []
+    )
+    
+    
     
     return(
         <div>
@@ -33,7 +88,9 @@ export const Profile = (props) => {
                 </div>
             </div>
             <div id='user-tweets'>
-                <Tweet screenName="Shadow" username="ArchivistShadow" timePosted="33s" likes={3}/>
+                {
+                    tweets.map((tweet) => <Tweet username={tweet.username.stringValue} screenName={tweet.screenName.stringValue} timePosted={getTimeDiff(tweet.datePosted.timestampValue)} content={tweet.content.stringValue} />)
+                }
             </div>
         </div>
     );

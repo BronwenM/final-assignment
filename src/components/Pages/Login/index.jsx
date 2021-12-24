@@ -25,7 +25,7 @@ export const LoginPage =() => {
                 formVals.user,
                 formVals.password
             );
-            globalState.initUserData(formVals.username, formVals.screenName);
+            
             navigate("/home");
         } catch (error) {
             console.log(error);
@@ -66,7 +66,7 @@ export const LoginPage =() => {
         try {
             const signupUser = await createUserWithEmailAndPassword(auth, formVals.user, formVals.password);
             createNewUser(formVals);
-            globalState.initUserData(formVals.username, formVals.screenName);
+            
             navigate("/home");
         } catch (error) {
             console.log(error);
@@ -89,6 +89,8 @@ export const LoginPage =() => {
                 <form className='signup-form' onSubmit={handleSubmit(signup)}>
                     <h2>Sign Up</h2>
                     <input type='email' name='user' required {...register("user")} placeholder='Email'/>
+                    <input type='text' name='username' required {...register("username")} placeholder='Username'/>
+                    <input type='text' name='screenName' required {...register("screenName")} placeholder='Screen Names'/>
                     <input type='password' name='password' required placeholder='Password' {...register("password")}/>
                     <input type='password' name='password' required placeholder='Confirm Password' {...register("passwordConfirm")}/>
                     <input type='submit' value='Login'/> <br/>

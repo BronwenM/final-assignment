@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 export const HomePage = () => {
 
     const [tweets, setTweets] = useState([]);
+    const [userData, setUserData] = useState([]);
     const navigate = useNavigate();
     const globalState = useContext(UserContext);
 
@@ -20,9 +21,33 @@ export const HomePage = () => {
             if(!user){
               navigate("/login");
             }
+            if (user){
+                globalState.initUserID(user.uid);
+                globalState.initUserData(userData.username.stringValue, userData.screenName.stringValue);
+            }
           });
         }, []
-      )
+    );
+
+    const getUserData = async(userID) => {
+        try {
+            const res = await fetch("https://firestore.googleapis.com/v1/projects/final-assignment-3e1d7/databases/(default)/documents/users/" + userID);
+            const data = await res.json();
+            console.log(data);
+            const formatData = data.documents.map( (user) => {
+                return user.fields;
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(
+        ()=> {
+            getUserData(globalState.userID)
+        }, []
+    )
 
     const getTweets = async() => {
         try {
