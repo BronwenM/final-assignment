@@ -1,4 +1,4 @@
-@media screen and (max-width: 1300px) {
+/*@media screen and (max-width: 1300px) {
   .content {
     margin-left: 90px;
   }
@@ -8,7 +8,7 @@
   .content {
     margin-left: 275px;
   }
-}
+}*/
 
 @media screen and (max-width: 500px) {
   .content {
@@ -26,4 +26,10 @@
   --twitter-light-grey: #AAB8C2;
   --twitter-xlight-grey: #E1E8ED;
   --twitter-xxlight-grey: #F5F8FA;
+}
+
+div#root {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }

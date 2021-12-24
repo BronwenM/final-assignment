@@ -10,7 +10,6 @@ header {
     position: sticky;
     z-index: 1;
     top: 0;
-    border-left: 1px var(--twitter-xlight-grey) solid;
 }
 
 #header-text h3, #header-text p{

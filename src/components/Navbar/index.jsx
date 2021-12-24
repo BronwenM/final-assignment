@@ -7,11 +7,15 @@ import {MdMailOutline} from 'react-icons/md';
 import {BsBookmark, BsPerson} from 'react-icons/bs';
 import {CgMoreO, CgSearch} from 'react-icons/cg';
 import { useState } from 'react';
+import { Button } from '../Button';
+import { useNavigate } from 'react-router-dom';
 
 export const Navbar = () => {
 
     {/* For later to set active link so that icons can be set conditionally */}
     const [activeLink, setActiveLink] = useState(null);
+
+    const navigate = useNavigate();
 
     return(
         <nav className="navbar">
@@ -43,6 +47,9 @@ export const Navbar = () => {
                 </li>
                 <li>
                     <a className="logo" href='#'><CgMoreO/> <span className="link-title">More</span></a>
+                </li>
+                <li>
+                    <Button isDisabled={false} type="primary" text="Tweet" action={()=>{navigate('/profile')}}/>
                 </li>
             </ul>
 

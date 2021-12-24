@@ -5,6 +5,9 @@ import { Button } from '../../Button';
 import { Search } from '../../Search';
 import { useContext, useEffect, useState } from 'react';
 import UserContext from '../../../context/userContext';
+import {getAuth, onAuthStateChanged} from '@firebase/auth';
+import { Header } from '../../Header';
+import {NewTweet} from '../../NewTweet';
 
 export const HomePage = () => {
 
@@ -39,12 +42,6 @@ export const HomePage = () => {
         const diffMins = Math.round(diffS/60);
         const diffHrs = Math.floor(diffMins/60);
 
-        console.log(diffMS + "ms");
-        console.log(diffS + "s");
-        console.log(diffMins + "m");
-        console.log(diffHrs + "h");
-
-
         if(diffS < 60){
             return diffS.toString() + "s";
         }
@@ -67,29 +64,15 @@ export const HomePage = () => {
     )
 
     return(
-        <div>
-            <header>
-                <div id='header-text'>
-                    <h3>Home</h3>
-                </div>                
-            </header>
-            <div className='page-content'>
-                <div className='main-content'>
-                    <Tweet likes={3}/>
-                    {
-                        tweets.map((tweet)=><Tweet username={tweet.username.stringValue} screenName={tweet.screenName.stringValue} timePosted={getTimeDiff(tweet.datePosted.timestampValue)} content={tweet.content.stringValue} />)
-                    }
-                </div>
-                <div className='sidebar'>
-                    <Footer/>
-                    <Button isDisabled={false} type="primary" text="Tweet"/>
-                    <Button isDisabled={false} type="secondary" text="Follow"/>
-                    <Button isDisabled={false} type="tertiary" text="Set up profile"/>
-                    <Search/>
-                </div>
-                
-            </div>           
-            
+        <div className='page-content'>
+            <div className='main-content'>
+                <Header title="Home"/>
+                <NewTweet/>
+                <Tweet likes={3}/>
+                {
+                    tweets.map((tweet)=><Tweet username={tweet.username.stringValue} screenName={tweet.screenName.stringValue} timePosted={getTimeDiff(tweet.datePosted.timestampValue)} content={tweet.content.stringValue} />)
+                }
+            </div>                
         </div>
     );
 }

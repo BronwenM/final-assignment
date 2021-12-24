@@ -7,14 +7,11 @@
 
 .tweet-content {
     margin-left: 1rem;
+    width: 100%;
 }
 
 .profile-info {
     margin-bottom: 1rem;
-}
-
-.profile-info span{
-
 }
 
 .profile-picture {

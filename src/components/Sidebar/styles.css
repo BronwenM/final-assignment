@@ -1,0 +1,10 @@
+.sidebar {
+    display: flex;
+    border-left: 1px var(--twitter-xlight-grey) solid;
+    justify-content: flex-start;
+    flex-direction: column;
+    top: 0;
+    height: 100%;
+    width: clamp(90px, 15vw, 275px);
+    padding-left: 1rem;
+}
