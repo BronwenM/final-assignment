@@ -1,19 +1,28 @@
 import './styles.css';
 import {Tweet} from '../../Tweet';
-import { Footer } from '../../Footer';
-import { Button } from '../../Button';
-import { Search } from '../../Search';
 import { useContext, useEffect, useState } from 'react';
 import UserContext from '../../../context/userContext';
 import {getAuth, onAuthStateChanged} from '@firebase/auth';
 import { Header } from '../../Header';
 import {NewTweet} from '../../NewTweet';
+import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
 
     const [tweets, setTweets] = useState([]);
-
+    const navigate = useNavigate();
     const globalState = useContext(UserContext);
+
+    useEffect(
+        () => {
+          const auth = getAuth();
+          onAuthStateChanged(auth, (user) => {
+            if(!user){
+              navigate("/login");
+            }
+          });
+        }, []
+      )
 
     const getTweets = async() => {
         try {

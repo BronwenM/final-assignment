@@ -9,6 +9,7 @@ import {CgMoreO, CgSearch} from 'react-icons/cg';
 import { useState } from 'react';
 import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
+import { Logout } from '../Logout';
 
 export const Navbar = () => {
 
@@ -49,7 +50,7 @@ export const Navbar = () => {
                     <a className="logo" href='#'><CgMoreO/> <span className="link-title">More</span></a>
                 </li>
                 <li>
-                    <Button isDisabled={false} type="primary" text="Tweet" action={()=>{navigate('/profile')}}/>
+                    <Logout/>
                 </li>
             </ul>
 

@@ -5,6 +5,7 @@ import { HomePage } from './components/Pages/HomePage';
 import { Profile } from './components/Pages/Profile';
 import {Sidebar} from './components/Sidebar';
 import { Header } from './components/Header';
+import { LoginPage } from './components/Pages/Login';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/messages" element={<h1>Messages Page</h1>} />
           <Route path="/i/bookmarks" element={<h1>Bookmarks Page</h1>} />
           <Route path="/user/lists" element={<h1>Lists Page</h1>} />
+          <Route path="/login" element={<LoginPage/>} />
         </Routes>
       </div>
       <Sidebar hasSearch={true}/>

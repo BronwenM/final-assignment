@@ -1,6 +1,5 @@
 import './styles.css';
 import {useForm} from 'react-hook-form';
-import { useState } from 'react';
 import UserContext from '../../context/userContext';
 import { useContext } from 'react';
 import {GrClose} from 'react-icons/gr';
@@ -63,7 +62,7 @@ export const NewTweet = () => {
         <div id='new-tweet'>
             <GrClose/>
             <form className='new-tweet' onSubmit={handleSubmit(postTweet)}>
-                <input {...register("content")} type='text' maxLength={250} placeholder="What's happening?" required/>
+                <input id='tweet-text' {...register("content")} type='text' maxLength={250} placeholder="What's happening?" required/>
                 <input type='submit' value='Tweet'/>
             </form>
         </div>

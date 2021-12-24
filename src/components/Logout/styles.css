@@ -1,0 +1,14 @@
+.logout-btn {
+    display: block;
+    border: none;
+    background-color: var(--twitter-blue);
+    font-size: 18px;
+    color: #fff;
+    padding: 1rem 0;
+    font-weight: bold;
+    border-radius: 2rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    height: fit-content;
+}
