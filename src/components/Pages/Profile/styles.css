@@ -1,26 +1,14 @@
-header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    background-color: cadetblue;
-    align-items: center;
-    padding: 1rem;
-    box-sizing: border-box;
-}
-
-#header-text {
-    margin-left: 3rem;
-}
-
-#header-text h3, #header-text p{
-    margin: 0;
-}
-
 .banner img{
     width: 100%;
     height: auto;
     min-height: 100px;
     max-height: 200px;
+}
+
+.profile{
+    border-bottom: 1px var(--twitter-xlight-grey) solid;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
 }
 
 .profile-img {
@@ -39,6 +27,11 @@ header {
 
 .profile-img button {
     width: 200px;
+}
+
+.profile-details {
+    margin-left: 2rem;
+    box-sizing: border-box;
 }
 
 .profile-details p {

@@ -3,23 +3,82 @@ import {Tweet} from '../../Tweet';
 import { Footer } from '../../Footer';
 import { Button } from '../../Button';
 import { Search } from '../../Search';
+import { useContext, useEffect, useState } from 'react';
+import UserContext from '../../../context/userContext';
 
 export const HomePage = () => {
+
+    const [tweets, setTweets] = useState([]);
+
+    const globalState = useContext(UserContext);
+
+    const getTweets = async() => {
+        try {
+            const res = await fetch("https://firestore.googleapis.com/v1/projects/final-assignment-3e1d7/databases/(default)/documents/tweets/");
+            const data = await res.json();
+            console.log(data);
+
+            const formatData = data.documents.map( (tweet) => {
+                return tweet.fields;
+            })
+
+            console.log(formatData);
+            setTweets(formatData);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const getTimeDiff = (originalTime) => {
+        const currTime = Date.now();
+        const postTime = new Date(originalTime);
+        console.log(postTime.toString());
+        const diffMS = (currTime - postTime);
+        const diffS = Math.floor((currTime - postTime)/1000);
+        const diffMins = Math.round(diffS/60);
+        const diffHrs = Math.floor(diffMins/60);
+
+        console.log(diffMS + "ms");
+        console.log(diffS + "s");
+        console.log(diffMins + "m");
+        console.log(diffHrs + "h");
+
+
+        if(diffS < 60){
+            return diffS.toString() + "s";
+        }
+        if((diffS >= 60) && (diffMins < 60)) {
+            return diffMins.toString() + "m";
+        }
+        if((diffMins >= 60) && (diffHrs < 24)) {
+            return diffHrs.toString() + "h";
+        }
+        if(diffHrs >= 24){
+            return postTime.toLocaleString('default', {month: 'short', day: 'numeric'});
+        }
+
+    }
+
+    useEffect(
+        ()=> {
+            getTweets();
+        }, []
+    )
+
     return(
         <div>
             <header>
-                <h1>Home page (currently testing)</h1>
+                <div id='header-text'>
+                    <h3>Home</h3>
+                </div>                
             </header>
             <div className='page-content'>
                 <div className='main-content'>
-                    <table className='timeline'>
-                        <tr>
-                            <Tweet screenName="Shadow" username="ArchivistShadow" timePosted="33s" likes={3}/>
-                        </tr>
-                        <tr>
-                            <Tweet screenName="Shadow" username="ArchivistShadow" timePosted="33s" likes={3}/>
-                        </tr>
-                    </table>
+                    <Tweet likes={3}/>
+                    {
+                        tweets.map((tweet)=><Tweet username={tweet.username.stringValue} screenName={tweet.screenName.stringValue} timePosted={getTimeDiff(tweet.datePosted.timestampValue)} content={tweet.content.stringValue} />)
+                    }
                 </div>
                 <div className='sidebar'>
                     <Footer/>
@@ -29,9 +88,7 @@ export const HomePage = () => {
                     <Search/>
                 </div>
                 
-            </div>
-            
-            
+            </div>           
             
         </div>
     );

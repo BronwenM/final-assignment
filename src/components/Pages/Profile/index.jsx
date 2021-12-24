@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import {BsCalendar3} from 'react-icons/bs';
 import profilePic from '../../../assets/images/blank-profile-pic.png';
 import blankBanner from '../../../assets/images/blank-banner.png';
+import { Tweet } from '../../Tweet';
+import { Header } from '../../Header';
 
 export const Profile = (props) => {
     
@@ -12,14 +14,8 @@ export const Profile = (props) => {
     
     return(
         <div>
-            <header>
-                <IoArrowBack/>
-                <div id='header-text'>
-                    <h3>Profile</h3>
-                    <p>{tweetCount} Tweets</p>
-                </div>                
-            </header>
-            <div className='profile-info'>
+            <Header hasArrow={true} title="Profile" hasSubtitle={true} subtitle={tweetCount + " Tweets"}/>
+            <div className='profile'>
                 <div className='banner'>
                     <img src={blankBanner}/>
                 </div>
@@ -35,6 +31,9 @@ export const Profile = (props) => {
                     <a href='/user/following'>{followCount} Following</a>
                     <a href='/user/followers'>{followerCount} Followers</a>
                 </div>
+            </div>
+            <div id='user-tweets'>
+                <Tweet screenName="Shadow" username="ArchivistShadow" timePosted="33s" likes={3}/>
             </div>
         </div>
     );

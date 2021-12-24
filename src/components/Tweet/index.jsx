@@ -46,15 +46,15 @@ Tweet.propTypes = {
     screenName: PropTypes.string.isRequired,
     timePosted: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
-    comments: PropTypes.number.isRequired,
-    retweets: PropTypes.number.isRequired,
-    likes: PropTypes.number.isRequired
+    comments: PropTypes.number,
+    retweets: PropTypes.number,
+    likes: PropTypes.number
 }
 
 Tweet.defaultProps = {
-    username: "ArchivistShadow",
-    screenName: "Shadow",
-    timePosted: "Dec 20",
+    username: "DefaultUser",
+    screenName: "Default",
+    timePosted: "No Date",
     content: "This tweet is super cool and the author isn't crazy for making another version of twitter.",
     comments: null,
     retweets: null,
